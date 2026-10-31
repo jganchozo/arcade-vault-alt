@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect x="1" y="1" width="30" height="30" fill="#0a0a0f" stroke="#00f5ff"/>
+  <path d="M2 2v28h28Z" fill="#ff006e"/>
+  <path d="M30 2v28H2Z" fill="#00f5ff" style="mix-blend-mode:screen"/>
+</svg>

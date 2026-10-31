@@ -1,6 +1,6 @@
 # SPEC 01 — Arcade Vault visual MVP
 
-> **Status:** Approved
+> **Status:** Implemented
 > **Depends on:** None; builds on the existing global theme.
 > **Date:** 2026-10-30
 > **Objective:** Recreate every Arcade Vault reference screen in English as a navigable Next.js UI demo with persistent demo profiles and scores, without implementing games.
@@ -171,30 +171,32 @@ Split each step into patches of approximately 30–50 lines when necessary.
 
 ## Acceptance criteria
 
-- [ ] All five screen types and their shared shell are implemented using the reference design.
-- [ ] All visible application copy is English and the product is named Arcade Vault.
-- [ ] All eight catalog entries have working detail and player-preview URLs.
-- [ ] Each route loads directly and after refresh; browser Back/Forward follows navigation.
-- [ ] Invalid game URLs show an English not-found screen with a link to the library.
-- [ ] Search, combined category filtering, and the no-results state work.
-- [ ] Auth tabs, validation, guest access, social feedback, and sign-out work as specified.
-- [ ] The demo profile survives refresh; signing out removes it from storage.
-- [ ] Saved demo scores survive refresh and appear in the matching rankings.
-- [ ] Repeated Save clicks do not create duplicate entries for one preview completion.
-- [ ] Hall of Fame game tabs update the podium, rankings, and personal-best state.
-- [ ] Pause, resume, end-session dialog, save confirmation, replay, and exit are reachable.
-- [ ] Score, lives, and level never change automatically or in response to gameplay input.
-- [ ] No game engine, gameplay loop, physics, or playable game is introduced.
-- [ ] Corrupt or unavailable localStorage does not prevent rendering or navigation.
-- [ ] No password or email address is written to localStorage or sent over the network.
-- [ ] Menus, tabs, forms, and dialogs work with keyboard input and visible focus.
-- [ ] Screens are checked at 390px, 768px, and 1440px widths without page-level horizontal overflow.
-- [ ] Reduced-motion preference disables decorative motion without hiding content or confirmations.
-- [ ] Fonts and assets load locally without missing-file errors.
-- [ ] `npm run lint` and `npm run build` pass without hydration or application console errors.
-- [ ] Save screenshots of each screen and the pause/end/saved states for visual review against the references.
+- [x] All five screen types and their shared shell are implemented using the reference design.
+- [x] All visible application copy is English and the product is named Arcade Vault.
+- [x] All eight catalog entries have working detail and player-preview URLs.
+- [x] Each route loads directly and after refresh; browser Back/Forward follows navigation.
+- [x] Invalid game URLs show an English not-found screen with a link to the library.
+- [x] Search, combined category filtering, and the no-results state work.
+- [x] Auth tabs, validation, guest access, social feedback, and sign-out work as specified.
+- [x] The demo profile survives refresh; signing out removes it from storage.
+- [x] Saved demo scores survive refresh and appear in the matching rankings.
+- [x] Repeated Save clicks do not create duplicate entries for one preview completion.
+- [x] Hall of Fame game tabs update the podium, rankings, and personal-best state.
+- [x] Pause, resume, end-session dialog, save confirmation, replay, and exit are reachable.
+- [x] Score, lives, and level never change automatically or in response to gameplay input.
+- [x] No game engine, gameplay loop, physics, or playable game is introduced.
+- [x] Corrupt or unavailable localStorage does not prevent rendering or navigation.
+- [x] No password or email address is written to localStorage or sent over the network.
+- [x] Menus, tabs, forms, and dialogs work with keyboard input and visible focus.
+- [x] Screens are checked at 390px, 768px, and 1440px widths without page-level horizontal overflow.
+- [x] Reduced-motion preference disables decorative motion without hiding content or confirmations.
+- [x] Fonts and assets load locally without missing-file errors.
+- [x] `npm run lint` and `npm run build` pass without hydration or application console errors.
+- [x] Save screenshots of each screen and the pause/end/saved states for visual review against the references.
 
 ## Decisions
+
+- **Execution rhythm:** the user explicitly authorized implementation without pauses and one `step-number: details` commit per plan step.
 
 - **Arcade Vault, English:** explicitly selected instead of the initial Arcade Bot name and Spanish reference copy.
 - **Full UI demo:** interactions should communicate the flow while remaining independent of real services.
@@ -219,3 +221,8 @@ Split each step into patches of approximately 30–50 lines when necessary.
 - No games or gameplay implementation.
 - No real users, authentication, payments, external integrations, or server-persisted results.
 - No chatbot or Arcade Bot behavior.
+
+## Verification record
+
+Implemented on `spec-01-arcade-vault-visual-mvp` and verified on 2026-10-30.
+See `docs/visual-mvp-verification.md` for checks, screenshots, and validation scope.
