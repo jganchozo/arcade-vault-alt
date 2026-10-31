@@ -1046,6 +1046,9 @@ a { color: inherit; text-decoration: none; }
     letter-spacing: 0.16em;
   }
   .game-card-link { display: flex; flex-direction: column; gap: 14px; }
+  .empty-state { grid-column: 1 / -1; text-align: center; padding: 64px 20px; color: var(--ink-dim); }
+  .empty-state h2 { font-size: 14px; margin: 0 0 12px; }
+  .empty-state p { margin: 0; }
   .game-card-link::after { content: ""; position: absolute; inset: 0; }
   .card .title, .card .desc { margin: 0; font-weight: 400; }
   .card .row { margin-top: auto; }
