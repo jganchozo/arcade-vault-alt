@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
 import { useDemo } from "./demo-provider";
+import { trapDialogFocus } from "../lib/dialog-focus";
 
 export function SiteNav() {
   const pathname = usePathname();
@@ -31,7 +32,7 @@ export function SiteNav() {
       <button className="btn ghost hamburger" aria-label="Open menu" aria-haspopup="dialog" aria-expanded={open}
         onClick={() => { menu.current?.showModal(); setOpen(true); }}>≡</button>
     </nav>
-    <dialog ref={menu} className="av-mobile-dialog" aria-labelledby="mobile-menu-title" onClose={() => setOpen(false)}
+    <dialog ref={menu} className="av-mobile-dialog" aria-labelledby="mobile-menu-title" onClose={() => setOpen(false)} onKeyDown={trapDialogFocus}
       onClick={(event) => { if (event.target === event.currentTarget) closeMenu(); }}>
       <div className="av-mobile-panel open">
         <div className="mobile-menu-heading">

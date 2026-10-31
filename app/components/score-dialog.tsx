@@ -6,6 +6,7 @@ import { formatScore } from "../lib/rankings";
 import { normalizeName } from "../lib/demo-storage";
 import { PREVIEW_SCORE } from "./player-hud";
 import { useDemo } from "./demo-provider";
+import { trapDialogFocus } from "../lib/dialog-focus";
 
 type Props = { gameId: string; name: string; onDismiss: () => void; onReplay: () => void };
 
@@ -28,10 +29,11 @@ export function ScoreDialog({ gameId, name: initialName, onDismiss, onReplay }: 
   useEffect(() => {
     const element = dialog.current;
     element?.showModal();
+    element?.querySelector<HTMLInputElement>("#score-name")?.focus();
     return () => element?.close();
   }, []);
   return (
-    <dialog ref={dialog} className="modal-bd" aria-labelledby="score-dialog-title" onClose={onDismiss}>
+    <dialog ref={dialog} className="modal-bd" aria-labelledby="score-dialog-title" onClose={onDismiss} onKeyDown={trapDialogFocus}>
       <div className="modal">
         <button className="modal-close" onClick={onDismiss} aria-label="Close score dialog">×</button>
         <h2 id="score-dialog-title">SESSION OVER</h2>
