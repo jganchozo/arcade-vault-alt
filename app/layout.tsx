@@ -16,7 +16,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <div className="av-bg" aria-hidden="true" />
         <div className="av-noise" aria-hidden="true" />
         <div id="root">
-          <DemoProvider><SiteNav />{children}<SiteFooter /></DemoProvider>
+          <DemoProvider>
+            <SiteNav />
+            <main className="av-main" id="main-content">{children}</main>
+            <SiteFooter />
+          </DemoProvider>
         </div>
       </body>
     </html>
