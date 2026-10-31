@@ -1,10 +1,29 @@
 "use client";
 
-import { useState, type KeyboardEvent } from "react";
+import { useState, type KeyboardEvent, type FormEvent } from "react";
+import { useRouter } from "next/navigation";
+import { normalizeName } from "../lib/demo-storage";
+import { useDemo } from "./demo-provider";
 import { AuthFields } from "./auth-fields";
 
 export function AuthScreen() {
   const [tab, setTab] = useState<"in" | "up">("in");
+  const [feedback, setFeedback] = useState("");
+  const { signIn, signOut, ready } = useDemo();
+  const router = useRouter();
+  function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const name = normalizeName(String(data.get("username") ?? ""));
+    if (!name || !String(data.get("password") ?? "").trim()) {
+      setFeedback("Enter a username and password to preview your account.");
+      return;
+    }
+    signIn(name);
+    form.reset();
+    router.push("/");
+  }
   function moveTab(event: KeyboardEvent<HTMLButtonElement>) {
     if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
     event.preventDefault();
@@ -28,17 +47,19 @@ export function AuthScreen() {
           </button>)}
         </div>
         <div id="auth-panel" role="tabpanel" aria-labelledby={`auth-tab-${tab}`}>
-          <form onSubmit={(event) => event.preventDefault()}>
+          <form onSubmit={submit}>
             <AuthFields signUp={tab === "up"} />
-            <button className="btn lg auth-submit" type="submit">{tab === "in" ? "ENTER THE VAULT" : "CREATE & EXPLORE"}</button>
+            <button className="btn lg auth-submit" type="submit" disabled={!ready}>{tab === "in" ? "ENTER THE VAULT" : "CREATE & EXPLORE"}</button>
           </form>
         </div>
-        <button className="btn ghost auth-guest" type="button">CONTINUE AS GUEST</button>
+        <button className="btn ghost auth-guest" type="button" disabled={!ready}
+          onClick={() => { signOut(); router.push("/"); }}>CONTINUE AS GUEST</button>
         <div className="auth-divider">OR CONTINUE WITH</div>
         <div className="social">
-          <button className="btn ghost" type="button">◆ GOOGLE</button>
-          <button className="btn ghost" type="button">▣ GITHUB</button>
+          <button className="btn ghost" type="button" onClick={() => setFeedback("Google sign-in is unavailable in this demo.")}>◆ GOOGLE</button>
+          <button className="btn ghost" type="button" onClick={() => setFeedback("GitHub sign-in is unavailable in this demo.")}>▣ GITHUB</button>
         </div>
+        <p className="auth-feedback" role="status">{feedback}</p>
         <p className="auth-disclaimer">Demo access. No real account is created.</p>
       </section>
     </div>

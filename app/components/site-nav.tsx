@@ -7,7 +7,7 @@ import { useDemo } from "./demo-provider";
 
 export function SiteNav() {
   const pathname = usePathname();
-  const { state } = useDemo();
+  const { state, signOut } = useDemo();
   const menu = useRef<HTMLDialogElement>(null);
   const [open, setOpen] = useState(false);
   const closeMenu = () => menu.current?.close();
@@ -25,9 +25,9 @@ export function SiteNav() {
       </div>
       <div className="spacer" />
       <div className="coin-counter"><span className="coin" aria-hidden="true" /><span>CREDITS · 03</span></div>
-      <Link className={`btn auth-btn${state.profile ? " ghost" : ""}`} href="/auth">
-        {state.profile?.name ?? "Sign In"}
-      </Link>
+      {state.profile
+        ? <button className="btn ghost auth-btn" onClick={signOut} aria-label={`Sign out ${state.profile.name}`} title="Sign out">{state.profile.name} ▾</button>
+        : <Link className="btn auth-btn" href="/auth">Sign In</Link>}
       <button className="btn ghost hamburger" aria-label="Open menu" aria-haspopup="dialog" aria-expanded={open}
         onClick={() => { menu.current?.showModal(); setOpen(true); }}>≡</button>
     </nav>
@@ -41,6 +41,7 @@ export function SiteNav() {
         <Link href="/" className={libraryActive ? "active" : ""} onClick={closeMenu}>Library</Link>
         <Link href="/hall-of-fame" className={pathname === "/hall-of-fame" ? "active" : ""} onClick={closeMenu}>Hall of Fame</Link>
         <Link href="/auth" className={pathname === "/auth" ? "active" : ""} onClick={closeMenu}>{state.profile ? "Demo Account" : "Sign In"}</Link>
+        {state.profile && <button className="btn ghost" onClick={() => { signOut(); closeMenu(); }}>SIGN OUT</button>}
         <div className="mobile-menu-credits pixel">CREDITS · 03</div>
       </div>
     </dialog>
