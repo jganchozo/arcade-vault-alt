@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Static design references use browser globals and are not application code.
+    "references/**",
   ]),
 ]);
 
