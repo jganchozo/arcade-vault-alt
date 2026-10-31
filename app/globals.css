@@ -1066,6 +1066,13 @@ a { color: inherit; text-decoration: none; }
   .auth-guest { width: 100%; margin-top: 10px; }
   .auth-feedback { color: var(--yellow); font-size: 12px; }
   .auth-feedback:empty { display: none; }
+  .hall-head p { font-size: 10px; }
+  .hall-head h1 { font-weight: 400; }
+  .hall-return { text-align: center; margin-top: 32px; }
+  .podium-slot .name { margin: 8px 0 0; font-weight: 400; }
+  .podium-champion { font-size: 9px; color: var(--gold); letter-spacing: 0.18em; }
+  .podium-slot .champion-rank { font-size: 36px; margin-top: 4px; }
+  .podium-slot.gold .score { font-size: 20px; }
   .btn:disabled { opacity: 0.5; cursor: not-allowed; }
   .game-card-link::after { content: ""; position: absolute; inset: 0; }
   .card .title, .card .desc { margin: 0; font-weight: 400; }
