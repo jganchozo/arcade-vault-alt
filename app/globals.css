@@ -1078,6 +1078,13 @@ a { color: inherit; text-decoration: none; }
   .hall-table .tr.you .rk, .hall-table .tr.you .pl, .hall-table .tr.you .sc { color: var(--yellow); }
   .personal-empty { color: var(--ink-dim); text-align: center; font-size: 12px; }
   .preview-notice { font-size: 11px; letter-spacing: 0.12em; color: var(--ink-dim); text-align: center; margin: 0 0 18px; }
+  .hud-stats { display: flex; gap: 24px; flex-wrap: wrap; margin: 0; }
+  .hud-stat dd { margin: 0; }
+  .hud-stat .hud-name { color: var(--ink); }
+  .preview-pause { background: rgba(0, 0, 0, 0.6); z-index: 5; }
+  .preview-pause .pixel { font-size: 22px; }
+  .preview-pause p { font-family: var(--mono); font-size: 11px; color: var(--ink-dim); margin: 10px 0 0; letter-spacing: 0.16em; }
+  .crt.is-paused .game-arena * { animation-play-state: paused; }
   .btn:disabled { opacity: 0.5; cursor: not-allowed; }
   .game-card-link::after { content: ""; position: absolute; inset: 0; }
   .card .title, .card .desc { margin: 0; font-weight: 400; }
