@@ -10,5 +10,5 @@ export default async function PlayPage({ params }: { params: Promise<{ id: strin
   const { id } = await params;
   const game = getGame(id);
   if (!game) notFound();
-  return <PlayerPreview game={game} />;
+  return <PlayerPreview key={game.id} game={game} />;
 }

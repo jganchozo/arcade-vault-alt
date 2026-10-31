@@ -18,7 +18,7 @@ export function PlayerPreview({ game }: { game: Game }) {
       <PlayerHud gameId={game.id} name={state.profile?.name ?? "GUEST"} paused={paused}
         onPause={() => setPaused((value) => !value)} onEnd={() => setOver(true)} />
       <CrtPreview title={game.title} paused={paused} />
-      {over && <ScoreDialog name={state.profile?.name ?? "GUEST"} onDismiss={() => setOver(false)}
+      {over && <ScoreDialog gameId={game.id} name={state.profile?.name ?? "GUEST"} onDismiss={() => setOver(false)}
         onReplay={() => { setOver(false); setPaused(false); }} />}
     </div>
   );
