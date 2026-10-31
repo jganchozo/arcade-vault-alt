@@ -1035,6 +1035,18 @@ a { color: inherit; text-decoration: none; }
   outline-offset: 4px;
 }
 
+@layer components {
+  .av-footer {
+    border-top: 1px solid var(--line);
+    padding: 20px 32px;
+    text-align: center;
+    color: var(--ink-faint);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation: none !important;
