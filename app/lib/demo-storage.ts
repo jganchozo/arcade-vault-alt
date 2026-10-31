@@ -42,3 +42,18 @@ export function readDemoState(storage: Pick<Storage, "getItem">): { state: DemoS
     return { state: emptyDemoState(), available: false };
   }
 }
+
+export function writeDemoState(storage: Pick<Storage, "setItem">, state: DemoState): boolean {
+  try {
+    storage.setItem(STORAGE_KEY, JSON.stringify({
+      version: 1,
+      profile: state.profile ? { name: normalizeName(state.profile.name) } : null,
+      scores: state.scores.map(({ id, gameId, name, score, savedAt }) => ({
+        id, gameId, name: normalizeName(name), score, savedAt,
+      })),
+    }));
+    return true;
+  } catch {
+    return false;
+  }
+}
