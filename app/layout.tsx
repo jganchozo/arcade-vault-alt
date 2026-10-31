@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { DemoProvider } from "./components/demo-provider";
 import { SiteFooter } from "./components/site-footer";
+import { SiteNav } from "./components/site-nav";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,7 +16,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <div className="av-bg" aria-hidden="true" />
         <div className="av-noise" aria-hidden="true" />
         <div id="root">
-          <DemoProvider>{children}<SiteFooter /></DemoProvider>
+          <DemoProvider><SiteNav />{children}<SiteFooter /></DemoProvider>
         </div>
       </body>
     </html>
